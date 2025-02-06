@@ -1,0 +1,22 @@
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+model Vendor {
+    id            Int      @id @default(autoincrement())
+    vendorName    String
+    bankName      String
+    bankAccountNo String   @unique
+    addressLine1  String
+    addressLine2  String?
+    city          String
+    country       String
+    zipCode       String
+    createdAt     DateTime @default(now())
+    updatedAt     DateTime @updatedAt
+}
